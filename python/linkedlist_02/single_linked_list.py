@@ -49,26 +49,39 @@ class SingleLinkedList:
         :return:
         '''
 
-        if self._head is None:  # 空链表
-            if node is None:  # 指定节点也为空，可认为是在头结点前插入
-                self.insert_to_head(value)
-            # 如果指定节点不为空，但是链表为空，则不处理，直接跳出
-            return
-            # 需要找到node的上一个节点
+        # if self._head is None:  # 空链表
+        #     if node is None:  # 指定节点也为空，可认为是在头结点前插入
+        #         self.insert_to_head(value)
+        #     # 如果指定节点不为空，但是链表为空，则不处理，直接跳出
+        #     return
+        #     # 需要找到node的上一个节点
+        #
+        # pre = self._head
+        # new_node = Node(value)
+        # not_found = False
+        # while pre.next_node != node:
+        #     if pre.next_node is None:  # 已到链尾
+        #         not_found = True
+        #         break
+        #     else:
+        #         pre = pre.next_node
+        #
+        # if not not_found:
+        #     new_node.next_node = node
+        #     pre.next_node = new_node
+        dummy = Node(None)
+        dummy.next_node = self._head
+        pre = dummy
+        current = pre.next_node
+        while current != node and current is not None:
+            pre = current
+            current = current.next_node
 
-        pre = self._head
-        new_node = Node(value)
-        not_found = False
-        while pre.next_node != node:
-            if pre.next_node is None:  # 已到链尾
-                not_found = True
-                break
-            else:
-                pre = pre.next_node
-
-        if not not_found:
+        if current == node:
+            new_node = Node(value)
             new_node.next_node = node
             pre.next_node = new_node
+        self._head = dummy.next_node
 
     def delete_by_value(self, value: int):
         '''
@@ -187,7 +200,7 @@ class SingleLinkedList:
 
     def find_by_value(self, value: int):
         '''
-        根据value查找对应节点
+        根据value查找对应的第一个节点
         :param value:
         :return:
         '''
@@ -300,6 +313,9 @@ if __name__ == "__main__":
     l1.insert_to_head(2)
     l1.insert_to_head(1)
 
+    l1.print_all()
+    node2 = l1.find_by_index(1)
+    l1.insert_node_before(node2, 3)
     l1.print_all()
 
     l2 = SingleLinkedList()
