@@ -1,12 +1,12 @@
-package stack_03
+package _3_stack
 
 import (
 	"fmt"
 	"testing"
 )
 
-func TestLinkedStack_Push(t *testing.T) {
-	s := NewLinkedStack()
+func TestArrayStack_Push(t *testing.T) {
+	s := NewArrayStack()
 	s.Push(1)
 	s.Push(2)
 	s.Push(3)
@@ -15,8 +15,8 @@ func TestLinkedStack_Push(t *testing.T) {
 }
 
 
-func TestLinkedStack_Pop(t *testing.T) {
-	s := NewLinkedStack()
+func TestArrayStack_Pop(t *testing.T) {
+	s := NewArrayStack()
 	s.Push(1)
 	s.Push(2)
 	s.Push(3)

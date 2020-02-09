@@ -1,4 +1,4 @@
-package stack_03
+package _3_stack
 import "testing"
 
 func TestBrowser(t *testing.T) {

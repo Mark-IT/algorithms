@@ -1,4 +1,4 @@
-package array_01
+package _1_array
 
 import (
 	"errors"
